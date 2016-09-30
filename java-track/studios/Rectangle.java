@@ -55,10 +55,11 @@ public class Rectangle {
 
 	public static void main(String[] args) {
 		
-		Rectangle myRectangle = new Rectangle(10, 10);
+		Rectangle myRectangle = new Rectangle(100, 10);
 		Rectangle yourRectangle = new Rectangle(15,10);
 		System.out.println(myRectangle);
 		System.out.println(myRectangle.getArea());
+		System.out.println(myRectangle.getPerimeter());
 		System.out.println(myRectangle.compareRectangle(yourRectangle));
 		System.out.println(myRectangle.isSquare());
 		;
