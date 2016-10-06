@@ -48,10 +48,7 @@ public class Rectangle {
 		}
 	}
 	
-	//Get Area
-	//Get Perimeter
-	//Compare area
-	//isSquare
+
 
 	public static void main(String[] args) {
 		
