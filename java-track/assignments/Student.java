@@ -72,8 +72,18 @@ public class Student {
 	
 	public double computeTuition() {
 		
-		double costPerCredit = 20000.00 / 15;
-		return (costPerCredit * this.credits);
+		double tuition = 0.00;
+		if(this.credits == 15) {
+			tuition = 20000;
+		} else if(this.credits > 15) {
+			tuition = 20000 + (1333.33 * (this.credits - 15));
+		} else {
+			tuition = (this.credits * 1333.33);
+		}
+		
+		return tuition;
+		//double costPerCredit = 20000.00 / 15;
+		//return (costPerCredit * this.credits);
 				
 	}
 	
