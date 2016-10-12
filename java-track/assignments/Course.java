@@ -79,16 +79,7 @@ public class Course {
 		}
 		
 		return sum / numOfStudents;
-		/*double totalGPA = 0.0;
-		for(Student student : this.roster) {
-			if(student != null) {
-				totalGPA = totalGPA + student.getGPA();
-			} else {
-				totalGPA = totalGPA;
-			}
-		}
-		double averageGPA = (totalGPA / this.roster.length - this.remainingSeats);
-		return averageGPA;*/
+		
 	}
 	
 	public String toString() {
