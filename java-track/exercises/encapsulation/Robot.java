@@ -121,7 +121,7 @@ public class Robot {
 		System.out.println(myRobot.toString());
 		myRobot.rotateRobot();
 		System.out.println(myRobot.toString());
-				
+		
 
 	}
 
