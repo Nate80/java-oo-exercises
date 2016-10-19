@@ -14,7 +14,7 @@ public class RobotMenu {
 		do {
 			x = rm.startMenu();
 			rm.processInput(x);			
-		} while (x != 5);
+		} while (x != 6);
 	}
 	
 	public RobotMenu() {
@@ -27,11 +27,12 @@ public class RobotMenu {
 		System.out.println("Welcome to the Robot Constructor!");
 		System.out.println("1. Create a Robot.");
 		System.out.println("2. Display the list of available robots.");
-		System.out.println("3. Change the robots speed.");
-		System.out.println("4. Change the robots orientation.");
-		System.out.println("5. Exit.");
+		System.out.println("3. Move a robot.");
+		System.out.println("4. Rotate a robot.");
+		System.out.println("5. Compute the distance between two robots.");
+		System.out.println("6. Exit");
 		int selection = s.nextInt();
-		while(selection < 0 || selection > 5) {
+		while(selection < 0 || selection > 6) {
 			System.out.println("Invalid selection, please try again!");
 			selection = s.nextInt();
 		}
@@ -41,7 +42,23 @@ public class RobotMenu {
 	public void processInput(int selection) {
 		if(selection == 1) {
 			createRobot();
+		} else if (selection == 2) {
+			displayRobots();
+		} else if (selection == 3) {
+			moveRobot();
+		} else if (selection == 4) {
+			rotateRobot();
+		} else if (selection == 5) {
+			distanceBetweenRobots();
 		}
+	}
+	
+	public void displayRobots() {
+		for(int i = 0; i < robots.size(); i++)
+		{
+			System.out.println((i+1) + ".)" + robots.get(i)); 
+		}
+		
 	}
 
 	
