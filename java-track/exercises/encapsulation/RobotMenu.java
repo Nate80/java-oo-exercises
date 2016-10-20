@@ -61,5 +61,65 @@ public class RobotMenu {
 		
 	}
 
+	private Robot findRobot(String name)
+	{
+		for(Robot r: robots)
+		{
+			if(r.getName() == name) 
+			{
+				return r;
+			}
+		}
+		return null;
+	}
 	
+	private void moveRobot() 
+	{
+		System.out.println("Pick your robot (name)");
+		String robotName = s.next();
+		System.out.println("How many minutes should the robot move?");	
+		int robotTime = s.nextInt();
+		findRobot(robotName).moveRobot(robotTime);
+	}
+	
+	private double distanceBetweenRobots()
+	{
+		System.out.println("Select your robot (name)");
+		String robotName = s.next();
+		System.out.println("Select a second robot (name)");
+		String robot2Name = s.next();
+		return findRobot(robotName).robotDistance(findRobot(robot2Name));
+	}
+	
+	private void rotateRobot()
+	{
+		System.out.println("Select your robot (name)");
+		String robotName = s.next();
+		findRobot(robotName).rotateRobot();
+		//maybe eventually make a return String which says what direction the robot faces.....
+	}
+	
+	private void createRobot()
+	{
+		System.out.println("Please provide the robot's name.");
+		String name = s.next();   //is this the robot's to string method or is it a different method that's called by the scanner function?
+		
+		System.out.println("Please enter the robot's x coordinate.");
+		int x = s.nextInt();
+		
+		System.out.println("Please enter the robot's y coordinate.");
+		int y = s.nextInt();
+		
+		System.out.println("Please enter the robot's speed.");
+		int speed = s.nextInt();
+		
+
+		System.out.println("Please enter the robot's orientation (i.e. North, East, South, West).");
+		String orientation = s.next();
+		
+		robots.add(new Robot(name, x, y, speed, orientation));
+	}
+	
+
+
 }
