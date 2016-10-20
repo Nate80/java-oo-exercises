@@ -96,13 +96,13 @@ public class RobotMenu {
 		System.out.println("Select your robot (name)");
 		String robotName = s.next();
 		findRobot(robotName).rotateRobot();
-		//maybe eventually make a return String which says what direction the robot faces.....
+		
 	}
 	
 	private void createRobot()
 	{
 		System.out.println("Please provide the robot's name.");
-		String name = s.next();   //is this the robot's to string method or is it a different method that's called by the scanner function?
+		String name = s.next();   
 		
 		System.out.println("Please enter the robot's x coordinate.");
 		int x = s.nextInt();
