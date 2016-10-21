@@ -28,6 +28,12 @@ public class RobotTest {
 		
 	}
 	
+	@Test
+	public void testProtocolDroidReaction() {
+		ProtocolDroid m = new ProtocolDroid("R2", 4, 4, 5, "North", true);
+		System.out.println(m.determineSubjectMood());
+	}
+	
 	
 	
 		
