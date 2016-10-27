@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Javagram {
+	
+	private static Scanner s;
 
 	public static void main(String[] args) {
 
@@ -15,7 +17,7 @@ public class Javagram {
 		String dir = String.join(File.separator, baseParts);
 		String relPath;
 		Picture picture = null;
-		Scanner in = new Scanner(System.in);
+		Scanner s = new Scanner(System.in);
 		
 		// prompt user for image to filter and validate input
 		do {
@@ -26,7 +28,7 @@ public class Javagram {
 			try {
 				
 				System.out.println("Image path (relative to " + dir + "):");
-				relPath = in.next();
+				relPath = s.next();
 				
 				/*String[] relPathParts = relPath.split(File.separator);
 				imagePath = dir + File.separator + String.join(File.separator, Arrays.asList(relPathParts));
@@ -42,11 +44,18 @@ public class Javagram {
 			
 		} while(picture == null);
 		
-		// TODO - prompt user for filter and validate input
+		// prompt user for filter and validate input
+		// pass filter ID int to getFilter, and get an instance of Filter back
 		
-		// TODO - pass filter ID int to getFilter, and get an instance of Filter back 
-		//BlueFilter filter = getFilter();			
-		Filter filter = getFilter();
+		Filter filter = null;
+		try {
+			filter = getFilter();
+			
+		}
+		catch(IllegalArgumentException e) {
+			System.out.println("Exception thrown:" + e);
+			filter = getFilter();
+		}		
 		
 		// filter and display image
 		Picture processed = filter.process(picture);
@@ -57,7 +66,7 @@ public class Javagram {
 		// save image, if desired
 		
 		System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
-		String fileName = in.next();
+		String fileName = s.next();
 		
 		// TODO - if the user enters the same file name as the input file, confirm that they want to overwrite the original
 		
@@ -70,17 +79,34 @@ public class Javagram {
 		}	
 		
 		// close input scanner
-		in.close();
+		s.close();
 	}
 	
 	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
 	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
 	private static Filter getFilter() {
 		
-		// TODO - create some more filters, and add logic to return the appropriate one
+		System.out.println("Please Select a Filter: ");
+		System.out.println("1. Blue Filter");
+		System.out.println("2. Green Filter");
+		System.out.println("3. Red Filter");
 		
-		return new BlueFilter();
+		int selection = s.nextInt();
 		
+		if(selection < 0 || selection > 3) {
+			throw new IllegalArgumentException("Invalid selection, please try again.");
+		}
+		
+		Filter f = null;
+		if(selection == 1) {
+			f = new BlueFilter();
+		} else if(selection == 2) {
+			f = new GreenFilter();
+		} else {
+			f = new RedFilter();
+		}
+		
+		return f;
 	}
 
 }
