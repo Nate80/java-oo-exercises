@@ -17,12 +17,11 @@ public class Javagram {
 		String dir = String.join(File.separator, baseParts);
 		String relPath;
 		Picture picture = null;
-		Scanner s = new Scanner(System.in);
+		s = new Scanner(System.in);
+		String imagePath = "Path not set";
 		
 		// prompt user for image to filter and validate input
 		do {
-			
-			String imagePath = "path not set";
 			
 			// try to open the file
 			try {
@@ -84,9 +83,11 @@ public class Javagram {
 	
 	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
 	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
-	private static Filter getFilter() {
+	
+	
+	public static Filter getFilter() {
 		
-		System.out.println("Please Select a Filter: ");
+		System.out.println("Please Select a Filter!");
 		System.out.println("1. Blue Filter");
 		System.out.println("2. Green Filter");
 		System.out.println("3. Red Filter");
