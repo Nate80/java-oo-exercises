@@ -79,13 +79,13 @@ public class Javagram {
 			while(absFileName.equals(imagePath)) {
 				System.out.println("Saving will override the original image. Y/N?");
 				String selection = s.next();
-				if(selection.equals("Y") || selection.equals("yes")){
+				if(selection.equals("Y") || selection.equals("y")){
 					break;
 				}
 				else { 
 					System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
 					String newFileName = s.next();
-					absFileName = dir + File.separator + newFileName;
+					absFileName = dir + "\\" + newFileName;
 					
 				}
 			}
@@ -98,21 +98,17 @@ public class Javagram {
 			}
 	
 	
-	
-	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
-	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
-	
-	
 	public static Filter getFilter() {
 		
 		System.out.println("Please Select a Filter!");
 		System.out.println("1. Blue Filter");
 		System.out.println("2. Green Filter");
 		System.out.println("3. Red Filter");
+		System.out.println("4. Brightness Filter");
 		
 		int selection = s.nextInt();
 		
-		if(selection < 0 || selection > 3) {
+		if(selection < 0 || selection > 4) {
 			throw new IllegalArgumentException("Invalid selection, please try again.");
 		}
 		
@@ -121,8 +117,10 @@ public class Javagram {
 			f = new BlueFilter();
 		} else if(selection == 2) {
 			f = new GreenFilter();
-		} else {
+		} else if(selection == 3) { 
 			f = new RedFilter();
+		} else {
+			f = new BrightnessFilter();
 		}
 		
 		return f;
