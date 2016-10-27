@@ -47,14 +47,17 @@ public class Javagram {
 		// pass filter ID int to getFilter, and get an instance of Filter back
 		
 		Filter filter = null;
-		try {
+		do {
+			try {
+		
 			filter = getFilter();
 			
 		}
 		catch(IllegalArgumentException e) {
 			System.out.println("Exception thrown:" + e);
-			filter = getFilter();
-		}		
+		}
+		
+		}	while(filter == null);
 		
 		// filter and display image
 		Picture processed = filter.process(picture);
@@ -72,14 +75,29 @@ public class Javagram {
 		if (fileName.equals("exit")) {
 			System.out.println("Image not saved");
 		} else {
-			String absFileName = dir + File.separator + fileName;
+			String absFileName = dir + "\\" + fileName;
+			while(absFileName.equals(imagePath)) {
+				System.out.println("Saving will override the original image. Y/N?");
+				String selection = s.next();
+				if(selection.equals("Y") || selection.equals("yes")){
+					break;
+				}
+				else { 
+					System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
+					String newFileName = s.next();
+					absFileName = dir + File.separator + newFileName;
+					
+				}
+			}
 			processed.save(absFileName);
 			System.out.println("Image saved to " + absFileName);
 		}	
 		
 		// close input scanner
 		s.close();
-	}
+			}
+	
+	
 	
 	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
 	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
