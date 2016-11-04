@@ -104,7 +104,7 @@ public class Javagram {
 		System.out.println("1. Blue Filter");
 		System.out.println("2. Green Filter");
 		System.out.println("3. Red Filter");
-		System.out.println("4. Brightness Filter");
+		System.out.println("4. Invert Filter");
 		
 		int selection = s.nextInt();
 		
@@ -120,7 +120,7 @@ public class Javagram {
 		} else if(selection == 3) { 
 			f = new RedFilter();
 		} else {
-			f = new BrightnessFilter();
+			f = new InvertFilter();
 		}
 		
 		return f;
