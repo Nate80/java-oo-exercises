@@ -5,15 +5,14 @@ import java.util.regex.Pattern;//for regular expressions
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User extends Entity {
 
 	private String username;
 	private String password;
 	private String hashedPassword;
 	static List<User> users = new ArrayList<User>();
 	
-	
-	
+		
 	private static String hashPassword(String pwd) {
 		return pwd;
 	}
@@ -29,7 +28,12 @@ public class User {
 		return m.matches();
 	}
 	
+	public User(int UID, String username, String hashedPassword) {
+		super(UID);
 		
+	}
+	
+			
 	public String getUsername() {
 		return this.username;
 	}

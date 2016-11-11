@@ -6,7 +6,7 @@ public class PostandUserTests {
 
 	@Test
 	public void testIsValidUsername() {
-		username m = new username
+		username m = new username();
 	}
 	
 }
