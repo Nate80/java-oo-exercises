@@ -29,7 +29,12 @@ public class User {
 		return m.matches();
 	}
 	
+		
 	public String getUsername() {
 		return this.username;
+	}
+	
+	public String getPassword() {
+		return this.password;
 	}
 }
